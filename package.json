@@ -1,0 +1,48 @@
+{
+  "name": "letnie-istorii",
+  "version": "1.2.9",
+  "private": true,
+  "description": "Летние истории — исправления сохранений, интерфейса и стабильности",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^35.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "ru.letnieistorii.game",
+    "productName": "Летние истории",
+    "files": [
+      "index.html",
+      "main.cjs",
+      "preload.cjs",
+      "package.json",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Letnie-Istorii-Setup-${version}.${ext}",
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
